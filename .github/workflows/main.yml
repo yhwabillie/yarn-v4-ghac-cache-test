@@ -22,7 +22,7 @@ jobs:
 
       - name: Get cache dir path
         id: yarn-cache-dir-path
-        run: echo "CACHE_DIR=$(yarn config get cacheFolder)" >> $GITHUB_OUTPUT
+        run: echo "CACHE_DIR=$(yarn cache dir)" >> $GITHUB_OUTPUT
 
       - name: Yarn cache
         uses: actions/cache@v2
