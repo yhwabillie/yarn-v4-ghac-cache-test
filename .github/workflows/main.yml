@@ -39,9 +39,11 @@ jobs:
           NODE_MODULES_EXISTS=$(test -d "node_modules" && echo "true" || echo "false")
 
           if [[ "$CACHE_HIT" != 'true' || "$NODE_MODULES_EXISTS" == 'false' ]]; then
+            yarn install
+            yarn deploy
+          else
+            yarn deploy
           fi
-
-          yarn deploy
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
