@@ -20,7 +20,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20.11.1
-          cache: yarn
 
       # yarn 버전 설정
       - name: Set yarn version
