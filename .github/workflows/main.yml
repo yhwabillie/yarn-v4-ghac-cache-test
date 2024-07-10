@@ -26,19 +26,20 @@ jobs:
         run: yarn set version 1.22.22
 
       # yarn 캐시 경로 불러오기
-      - name: Get cache dir path
-        id: yarn-cache-dir-path
-        run: echo "CACHE_DIR=$(yarn config get cacheFolder)" >> $GITHUB_OUTPUT
+      # - name: Get cache dir path
+      #   id: yarn-cache-dir-path
+      #   run: echo "CACHE_DIR=$(yarn config get cacheFolder)" >> $GITHUB_OUTPUT
 
       # yarn 캐싱
       - name: Yarn cache
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         id: yarn-cache
         with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.CACHE_DIR }}
+          path: '**/node_modules'
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}-${{ steps.set-version.outputs.YARN_VERSION }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}-
+        - if: ${{ steps.yarn-cache.outputs.cache-hit != 'true' }}
+        run: yarn install
+        - run: yarn deploy
 
       # yarn 캐시 체크
       - name: Install dependencies
