@@ -19,5 +19,9 @@
     "@types/react-dom": "^18",
     "typescript": "^5"
   },
+  "cacheDirectories": [
+    "node_modules/",
+    ".next/cache/"
+  ],
   "packageManager": "yarn@4.3.1"
 }
