@@ -30,11 +30,11 @@ jobs:
         uses: actions/cache@v3
         id: yarn-cache
         with:
-          path: '**/node_modules'
+          path: "**/node_modules"
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}-${{ steps.set-version.outputs.YARN_VERSION }}
-        - if: ${{ steps.yarn-cache.outputs.cache-hit != 'true' }}
+      - if: ${{ steps.yarn-cache.outputs.cache-hit != 'true' }}
         run: yarn install
-        - run: yarn deploy
+      - run: yarn deploy
 
       # yarn 캐시 체크
       - name: Install dependencies
