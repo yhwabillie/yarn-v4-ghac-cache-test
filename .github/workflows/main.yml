@@ -1,5 +1,5 @@
 # github repository actions 페이지에 나타날 이름
-name: CI/CD using github actions
+name: CI/CD yarn berry v4
 
 # 트리거를 실행할 브랜치 지정
 on:
