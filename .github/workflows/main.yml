@@ -41,15 +41,10 @@ jobs:
 
       # yarn 캐시 체크
       - name: Install dependencies
-        run: |
-          CACHE_HIT="${{ steps.yarn-cache.outputs.cache-hit }}"
-          # NODE_MODULES_EXISTS=$(test -d "node_modules" && echo "true" || echo "false")
-
-          if ["$CACHE_HIT" != 'true']; then
-            yarn install
-          fi
-
-          yarn deploy
+        if: steps.yarn-cache.outputs.cache-hit != 'true'
+        run: yarn install
+        if: steps.yarn-cache.outputs.cache-hit = 'true'
+        run: yarn deploy
 
       # AWS
       - name: Configure AWS Credentials
