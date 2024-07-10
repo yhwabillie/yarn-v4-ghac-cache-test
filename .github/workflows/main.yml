@@ -35,7 +35,7 @@ jobs:
 
       # yarn 캐싱
       - name: Yarn cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         id: yarn-cache
         with:
           path: |
@@ -50,7 +50,7 @@ jobs:
       - name: Install dependencies
         run: |
           yarn install
-          yarn deploy
+          yarn build
 
       # AWS
       - name: Configure AWS Credentials
