@@ -31,7 +31,7 @@ jobs:
       # yarn 캐시 경로 가져오기
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
-        run: echo "dir=$(yarn config get cacheFolder)" >> $GITHUB_OUTPUT
+        run: echo "dir=$(yarn cache dir)" >> $GITHUB_OUTPUT
 
       # yarn 캐싱
       - name: Yarn cache
