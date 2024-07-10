@@ -209,6 +209,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"lottie@npm:^0.0.1":
+  version: 0.0.1
+  resolution: "lottie@npm:0.0.1"
+  checksum: 10c0/9c3a1c6ccab0723ffb1396028581ae47aefce42e6ff2b16f675cc7d6331284e4c8ec6c8199b853e7d8119fe899eac4a36ba4b21ea1b5c7f04b476a89e1abb001
+  languageName: node
+  linkType: hard
+
 "nanoid@npm:^3.3.6":
   version: 3.3.7
   resolution: "nanoid@npm:3.3.7"
@@ -415,6 +422,7 @@ __metadata:
     "@types/react-dom": "npm:^18"
     framer-motion: "npm:^11.3.0"
     gsap: "npm:^3.12.5"
+    lottie: "npm:^0.0.1"
     next: "npm:14.2.4"
     react: "npm:^18"
     react-dom: "npm:^18"
