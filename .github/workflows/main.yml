@@ -12,6 +12,8 @@ jobs:
       # 깃헙에 있는 프로젝트를 서버로 내려받음
       - name: Git Checkout
         uses: actions/checkout@v4
+      - name: Enable Corepack
+        run: corepack enable
 
       # 노드 버전 설치
       - name: Setup Node 20.11.1
@@ -23,12 +25,13 @@ jobs:
       # yarn 버전 설정
       - name: Set yarn version
         id: set-version
-        run: yarn set version 1.22.22
+        run: |
+          yarn set version 1.22.22
 
       # yarn 캐시 경로 가져오기
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
-        run: echo "dir=$(yarn cache dir)" >> $GITHUB_OUTPUT
+        run: echo "dir=$(yarn config get cacheFolder)" >> $GITHUB_OUTPUT
 
       # yarn 캐싱
       - name: Yarn cache
