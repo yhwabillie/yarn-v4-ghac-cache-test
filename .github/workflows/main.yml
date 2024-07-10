@@ -32,6 +32,9 @@ jobs:
         with:
           path: "**/node_modules"
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}-${{ steps.set-version.outputs.YARN_VERSION }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}-
+
       - if: ${{ steps.yarn-cache.outputs.cache-hit != 'true' }}
         run: yarn install
       - run: yarn deploy
