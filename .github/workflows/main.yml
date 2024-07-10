@@ -9,7 +9,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      # 깃헙에 있는 프로젝트를 서버로 내려받음
+      # 깃헙에 있는 프로젝트를 runner 서버로 내려받음
       - name: Git Checkout
         uses: actions/checkout@v4
       - name: Enable Corepack
@@ -28,13 +28,13 @@ jobs:
           yarn set version 4.3.1
 
       # yarn 캐시 경로 가져오기
-      - name: Get yarn cache directory path
+      - name: Get Yarn Cache Directory Path
         id: yarn-cache-dir-path
         run: echo "dir=$(yarn config get cacheFolder)" >> $GITHUB_OUTPUT
 
       # yarn 캐싱
-      - name: Yarn cache
-        uses: actions/cache@v3
+      - name: Yarn Cache
+        uses: actions/cache@v4
         id: yarn-cache
         with:
           path: |
@@ -44,11 +44,13 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-
 
-      # 무조건 deploy
-      - name: Install dependencies
-        run: |
-          yarn install
-          yarn build
+      # 종속성 다운로드
+      - name: Install Dependencies
+        run: yarn install
+
+      # build
+      - name: Yarn Build
+        run: yarn build
 
       # AWS
       # - name: Configure AWS Credentials
