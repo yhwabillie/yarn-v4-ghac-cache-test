@@ -43,7 +43,9 @@ jobs:
       - name: Install dependencies
         if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: yarn install
-        if: steps.yarn-cache.outputs.cache-hit = 'true'
+
+      # deploy
+      - name: yarn deploy
         run: yarn deploy
 
       # AWS
