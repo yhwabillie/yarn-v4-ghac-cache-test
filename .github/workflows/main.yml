@@ -41,7 +41,6 @@ jobs:
           if [[ "$CACHE_HIT" != 'true' || "$NODE_MODULES_EXISTS" == 'false' ]]; then
             yarn install
           fi
-        shell: bash
 
           yarn deploy
 
